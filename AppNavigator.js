@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
+import FontTestScreen from './screens/FontTestScreen';
 import SplashScreen from './screens/SplashScreen';
 import GarageDoorIntroScreen from './screens/GarageDoorIntroScreen';
 import MainMenuScreen from './screens/MainMenuScreen';
@@ -22,7 +23,8 @@ const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="FontTestScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FontTestScreen" component={FontTestScreen} />
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="GarageDoorIntroScreen" component={GarageDoorIntroScreen} />
       <Stack.Screen name="MainMenuScreen" component={MainMenuScreen} />
@@ -41,3 +43,4 @@ export default function AppNavigator() {
     </Stack.Navigator>
   );
 }
+
