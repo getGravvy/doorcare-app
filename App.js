@@ -11,17 +11,15 @@ import {
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_600SemiBold,
     Inter_700Bold,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
+  if (!fontsLoaded) return <AppLoading />;
 
-  // 🔥 Set Inter as the default font globally for all <Text>
+  // 🔥 GLOBAL FONT STYLE APPLIED HERE
   Text.defaultProps = Text.defaultProps || {};
   Text.defaultProps.style = { fontFamily: 'Inter_400Regular' };
 
