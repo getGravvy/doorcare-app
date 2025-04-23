@@ -2,7 +2,6 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import FontTestScreen from './screens/FontTestScreen';
 import SplashScreen from './screens/SplashScreen';
 import GarageDoorIntroScreen from './screens/GarageDoorIntroScreen';
 import MainMenuScreen from './screens/MainMenuScreen';
@@ -18,13 +17,13 @@ import AdminDashboardScreen from './screens/AdminDashboardScreen';
 import AnalyticsScreen from './screens/AnalyticsScreen';
 import PricingEditorScreen from './screens/PricingEditorScreen';
 import LogoUploaderScreen from './screens/LogoUploaderScreen';
+import FontTestScreen from './screens/FontTestScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator initialRouteName="FontTestScreen" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="FontTestScreen" component={FontTestScreen} />
+    <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="GarageDoorIntroScreen" component={GarageDoorIntroScreen} />
       <Stack.Screen name="MainMenuScreen" component={MainMenuScreen} />
@@ -40,6 +39,7 @@ export default function AppNavigator() {
       <Stack.Screen name="AnalyticsScreen" component={AnalyticsScreen} />
       <Stack.Screen name="PricingEditorScreen" component={PricingEditorScreen} />
       <Stack.Screen name="LogoUploaderScreen" component={LogoUploaderScreen} />
+      <Stack.Screen name="FontTestScreen" component={FontTestScreen} />
     </Stack.Navigator>
   );
 }
