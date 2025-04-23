@@ -1,0 +1,23 @@
+# React Native
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.log
+*.lock
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Android / iOS
+android/
+ios/
+
+# IDEs
+.vscode/
+.idea/

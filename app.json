@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "DoorCare",
+    "slug": "doorcare-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/doorcare_3d_logo.png",
+    "splash": {
+      "image": "./assets/images/garage_door_panel.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/doorcare_3d_logo.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/doorcare_3d_logo.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
