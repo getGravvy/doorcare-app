@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function MainMenuScreen({ navigation }) {
   return (
@@ -11,25 +12,27 @@ export default function MainMenuScreen({ navigation }) {
       <View style={styles.overlay}>
         <Text style={styles.title}>Welcome to DoorCare</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookServiceScreen')}>
-          <Text style={styles.buttonText}>Book a Service</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ServiceHistoryScreen')}>
-          <Text style={styles.buttonText}>Service History</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ReferAFriendScreen')}>
-          <Text style={styles.buttonText}>Refer a Friend</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('PlanComparisonScreen')}>
-          <Text style={styles.buttonText}>Compare Plans</Text>
-        </TouchableOpacity>
+        <GradientButton label="Book a Service" onPress={() => navigation.navigate('BookServiceScreen')} />
+        <GradientButton label="Service History" onPress={() => navigation.navigate('ServiceHistoryScreen')} />
+        <GradientButton label="Refer a Friend" onPress={() => navigation.navigate('ReferAFriendScreen')} />
+        <GradientButton label="Compare Plans" onPress={() => navigation.navigate('PlanComparisonScreen')} />
       </View>
     </ImageBackground>
   );
 }
+
+const GradientButton = ({ label, onPress }) => (
+  <TouchableOpacity style={styles.buttonWrapper} onPress={onPress}>
+    <LinearGradient
+      colors={['#007AFF', '#00C6FF']}
+      start={[0, 0]}
+      end={[1, 1]}
+      style={styles.button}
+    >
+      <Text style={styles.buttonText}>{label}</Text>
+    </LinearGradient>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   background: {
@@ -45,21 +48,23 @@ const styles = StyleSheet.create({
   title: {
     color: '#fff',
     fontSize: 28,
-    fontWeight: 'bold',
+    fontFamily: 'Inter_700Bold',
     marginBottom: 40,
   },
-  button: {
+  buttonWrapper: {
     width: '100%',
-    backgroundColor: 'rgba(0, 122, 255, 0.8)',
-    paddingVertical: 16,
-    paddingHorizontal: 24,
+    marginBottom: 16,
     borderRadius: 16,
-    marginBottom: 20,
+    overflow: 'hidden',
+  },
+  button: {
+    paddingVertical: 16,
     alignItems: 'center',
+    borderRadius: 16,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold',
   },
 });
