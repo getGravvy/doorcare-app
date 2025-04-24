@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -17,11 +18,14 @@ import AdminDashboardScreen from './screens/AdminDashboardScreen';
 import AnalyticsScreen from './screens/AnalyticsScreen';
 import PricingEditorScreen from './screens/PricingEditorScreen';
 import LogoUploaderScreen from './screens/LogoUploaderScreen';
-import FontTestScreen from './screens/FontTestScreen';
+// Comment this out to make sure it's not being used
+// import FontTestScreen from './screens/FontTestScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
+  console.log('🚨 LOADED NAV: Should start at GarageDoorIntroScreen');
+
   return (
     <Stack.Navigator initialRouteName="GarageDoorIntroScreen" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -39,7 +43,7 @@ export default function AppNavigator() {
       <Stack.Screen name="AnalyticsScreen" component={AnalyticsScreen} />
       <Stack.Screen name="PricingEditorScreen" component={PricingEditorScreen} />
       <Stack.Screen name="LogoUploaderScreen" component={LogoUploaderScreen} />
-      <Stack.Screen name="FontTestScreen" component={FontTestScreen} />
+      {/* <Stack.Screen name="FontTestScreen" component={FontTestScreen} /> */}
     </Stack.Navigator>
   );
 }
