@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import AppText from '../components/AppText';
 import { COLORS } from '../constants/theme';
 
-const { height } = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 export default function GarageDoorIntroScreen() {
   const navigation = useNavigation();
@@ -34,7 +34,7 @@ export default function GarageDoorIntroScreen() {
 
       {!doorOpened && (
         <View style={styles.overlay}>
-          <AppText weight="bold" style={styles.welcomeText}>Welcome to DoorCare</AppText>
+          <AppText weight="bold" style={styles.welcomeText}>🚪 Welcome to DoorCare</AppText>
           <TouchableOpacity style={styles.button} onPress={handleOpenGarage}>
             <AppText weight="semiBold" style={styles.buttonText}>Open Garage</AppText>
           </TouchableOpacity>
@@ -50,15 +50,15 @@ export default function GarageDoorIntroScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#1a1a1a',
   },
   door: {
     ...StyleSheet.absoluteFillObject,
     zIndex: 1,
   },
   doorImage: {
-    width: '100%',
-    height: '100%',
+    width: width,
+    height: height,
   },
   overlay: {
     position: 'absolute',
@@ -70,31 +70,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 2,
     paddingHorizontal: 24,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
   welcomeText: {
-    color: COLORS.text,
-    fontSize: 24,
-    marginBottom: 24,
+    color: '#ffffff',
+    fontSize: 28,
+    marginBottom: 30,
     textAlign: 'center',
   },
   button: {
     backgroundColor: COLORS.primary,
-    paddingVertical: 14,
-    paddingHorizontal: 28,
-    borderRadius: 20,
-    marginBottom: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 24,
+    marginBottom: 20,
   },
   buttonText: {
     fontSize: 18,
-    color: COLORS.text,
+    color: '#ffffff',
     textAlign: 'center',
   },
   adminLink: {
-    marginTop: 12,
+    marginTop: 16,
   },
   adminText: {
-    fontSize: 14,
-    color: '#cccccc',
+    fontSize: 16,
+    color: '#dddddd',
     textAlign: 'center',
   },
 });
