@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="GarageDoorIntroScreen" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="GarageDoorIntroScreen" component={GarageDoorIntroScreen} />
       <Stack.Screen name="MainMenuScreen" component={MainMenuScreen} />
@@ -43,4 +43,3 @@ export default function AppNavigator() {
     </Stack.Navigator>
   );
 }
-
