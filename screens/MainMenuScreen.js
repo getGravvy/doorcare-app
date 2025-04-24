@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import AppText from '../components/AppText';
+import { COLORS } from '../constants/theme';
 
 export default function MainMenuScreen({ navigation }) {
   return (
@@ -10,7 +12,7 @@ export default function MainMenuScreen({ navigation }) {
       resizeMode="cover"
     >
       <View style={styles.overlay}>
-        <Text style={styles.title}>Welcome to DoorCare</Text>
+        <AppText weight="bold" style={styles.title}>Welcome to DoorCare</AppText>
 
         <GradientButton label="Book a Service" onPress={() => navigation.navigate('BookServiceScreen')} />
         <GradientButton label="Service History" onPress={() => navigation.navigate('ServiceHistoryScreen')} />
@@ -24,12 +26,12 @@ export default function MainMenuScreen({ navigation }) {
 const GradientButton = ({ label, onPress }) => (
   <TouchableOpacity style={styles.buttonWrapper} onPress={onPress}>
     <LinearGradient
-      colors={['#007AFF', '#00C6FF']}
+      colors={[COLORS.primary, COLORS.primaryLight]}
       start={[0, 0]}
       end={[1, 1]}
       style={styles.button}
     >
-      <Text style={styles.buttonText}>{label}</Text>
+      <AppText weight="semiBold" style={styles.buttonText}>{label}</AppText>
     </LinearGradient>
   </TouchableOpacity>
 );
@@ -40,15 +42,13 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: COLORS.backgroundDark,
     paddingHorizontal: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
-    color: '#fff',
     fontSize: 28,
-    fontFamily: 'Inter_700Bold',
     marginBottom: 40,
   },
   buttonWrapper: {
@@ -63,8 +63,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   buttonText: {
-    color: '#fff',
     fontSize: 18,
-    fontFamily: 'Inter_600SemiBold',
   },
 });
