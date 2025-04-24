@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Dimensions,
-  Text,
-} from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AppText from '../components/AppText';
+import { COLORS } from '../constants/theme';
 
 const { height } = Dimensions.get('window');
 
-export default function GarageDoorIntroScreen({ navigation }) {
+export default function GarageDoorIntroScreen() {
+  const navigation = useNavigation();
   const [doorSlideAnim] = useState(new Animated.Value(0));
+  const [doorOpened, setDoorOpened] = useState(false);
 
   const handleOpenGarage = () => {
     Animated.timing(doorSlideAnim, {
@@ -20,22 +17,29 @@ export default function GarageDoorIntroScreen({ navigation }) {
       duration: 1200,
       useNativeDriver: true,
     }).start(() => {
+      setDoorOpened(true);
       navigation.replace('MainMenuScreen');
     });
   };
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.doorContainer, { transform: [{ translateY: doorSlideAnim }] }]}>
+      <Animated.View style={[styles.door, { transform: [{ translateY: doorSlideAnim }] }]}>
         <Image
           source={require('../assets/images/garage_door_panel.png')}
           style={styles.doorImage}
           resizeMode="cover"
         />
-        <TouchableOpacity style={styles.button} onPress={handleOpenGarage}>
-          <Text style={styles.buttonText}>Open Garage</Text>
-        </TouchableOpacity>
       </Animated.View>
+
+      {!doorOpened && (
+        <View style={styles.overlay}>
+          <AppText weight="bold" style={styles.welcomeText}>Welcome to DoorCare</AppText>
+          <TouchableOpacity style={styles.button} onPress={handleOpenGarage}>
+            <AppText weight="semiBold" style={styles.buttonText}>Open Garage</AppText>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }
@@ -43,29 +47,39 @@ export default function GarageDoorIntroScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
+    backgroundColor: '#000',
   },
-  doorContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+  door: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 1,
   },
   doorImage: {
-    position: 'absolute',
     width: '100%',
     height: '100%',
   },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 2,
+  },
+  welcomeText: {
+    color: COLORS.text,
+    fontSize: 24,
+    marginBottom: 24,
+  },
   button: {
-    marginBottom: 80,
-    backgroundColor: '#007AFF',
+    backgroundColor: COLORS.primary,
     paddingVertical: 14,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-    elevation: 4,
+    paddingHorizontal: 28,
+    borderRadius: 20,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 18,
+    color: COLORS.text,
   },
 });
