@@ -38,6 +38,9 @@ export default function GarageDoorIntroScreen() {
           <TouchableOpacity style={styles.button} onPress={handleOpenGarage}>
             <AppText weight="semiBold" style={styles.buttonText}>Open Garage</AppText>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.adminLink} onPress={() => navigation.navigate('AdminLoginScreen')}>
+            <AppText weight="semiBold" style={styles.adminText}>Admin Login</AppText>
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -66,20 +69,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 2,
+    paddingHorizontal: 24,
   },
   welcomeText: {
     color: COLORS.text,
     fontSize: 24,
     marginBottom: 24,
+    textAlign: 'center',
   },
   button: {
     backgroundColor: COLORS.primary,
     paddingVertical: 14,
     paddingHorizontal: 28,
     borderRadius: 20,
+    marginBottom: 16,
   },
   buttonText: {
     fontSize: 18,
     color: COLORS.text,
+    textAlign: 'center',
+  },
+  adminLink: {
+    marginTop: 12,
+  },
+  adminText: {
+    fontSize: 14,
+    color: '#cccccc',
+    textAlign: 'center',
   },
 });
