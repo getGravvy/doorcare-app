@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './AppNavigator';
 import {
@@ -18,10 +17,6 @@ export default function App() {
   });
 
   if (!fontsLoaded) return <AppLoading />;
-
-  // 🔥 GLOBAL FONT STYLE APPLIED HERE
-  Text.defaultProps = Text.defaultProps || {};
-  Text.defaultProps.style = { fontFamily: 'Inter_400Regular' };
 
   return (
     <NavigationContainer>
